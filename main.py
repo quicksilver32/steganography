@@ -74,7 +74,6 @@ class App(QtWidgets.QMainWindow, design.Ui_Steganography):
             show_message("Text is too long for this picture")
 
         secret_key = hashlib.md5(secret_key.encode())
-        print(secret_key)
         result = encrypt_image(img, text+"\0", secret_key)
         image = QtGui.QImage(result.data, result.shape[1], result.shape[0], QtGui.QImage.Format_RGB888).rgbSwapped()
         self.imgLabel2.setPixmap(QPixmap.fromImage(image))
